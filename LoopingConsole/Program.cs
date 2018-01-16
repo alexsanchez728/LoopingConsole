@@ -17,8 +17,20 @@ namespace LoopingConsole
             foreach (var child in children)
                     // ^ each instance in children, here: child, in its entirety, is what's being looped over.
             {
-            Console.WriteLine($"This child, {child.Name}, is {(child.Troubled ? "a very troubled child" : "is not troubled and is healthy")}"); // <~ ternary needed to be in parenthesis
-            Console.WriteLine(child.ForgeASickNote());
+
+                if (child.Name == "Suzy")
+                {
+                    continue; // quit this iteration of the loop when you see 'continue' but keep doing things
+                }
+
+                Console.WriteLine($"This child, {child.Name}, is {(child.Troubled ? "a very troubled child" : "is not troubled and is healthy")}"); // <~ ternary needed to be in parenthesis
+                Console.WriteLine(child.ForgeASickNote());
+
+                if (child.Name == "Suzy")
+                {
+                    break; // quit the whole loop.
+                }
+
             }
 
             Console.ReadLine();
