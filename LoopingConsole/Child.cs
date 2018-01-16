@@ -11,9 +11,9 @@ namespace LoopingConsole
         public string Name { get; set; }
         public bool Troubled { get; set; }
 
-        public string ForgeASickNote(bool sick)
+        public string ForgeASickNote()
         {
-            return sick
+            return Troubled
                 ? $"Please excuse {Name} from class today. As she is very VERY sick"
                 : $"{Name}, I know you tried to forge a sick note, but you're faking it. Go to school. Love, Mom";
         }

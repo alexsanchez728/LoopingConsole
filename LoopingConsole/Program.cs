@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LoopingConsole
 {
@@ -6,26 +7,20 @@ namespace LoopingConsole
     {
         static void Main(string[] args)
         {
-            var suzy = new Child
+            var children = new List<Child> // List of Child instances
             {
-                Name = "Suzy",
-                Troubled = false
+                new Child { Name = "Suzy", Troubled = false },
+                new Child { Name = "Sam", Troubled = false }
+                // ^ using object initializers inside of initializing a List
             };
-            // ^ Object initialization to keep things shorter. Only works with properties.
 
-            Console.WriteLine($"This child, {suzy.Name}, is {(suzy.Troubled ? "a very troubled child" : "is not troubled and is healthy")}"); // <~ ternary needed to be in parenthesis
-            Console.WriteLine(suzy.ForgeASickNote(true));
-            Console.ReadLine();
-
-            var sam = new Child
+            foreach (var child in children)
+                    // ^ each instance in children, here: child, in its entirety, is what's being looped over.
             {
-                Name = "Sam",
-                Troubled = false
-            };
-            // ^ Object initialization to keep things shorter. Only works with properties.
+            Console.WriteLine($"This child, {child.Name}, is {(child.Troubled ? "a very troubled child" : "is not troubled and is healthy")}"); // <~ ternary needed to be in parenthesis
+            Console.WriteLine(child.ForgeASickNote());
+            }
 
-            Console.WriteLine($"This child, {sam.Name}, is {(sam.Troubled ? "a very troubled child" : "is not troubled and is healthy")}"); // <~ ternary needed to be in parenthesis
-            Console.WriteLine(sam.ForgeASickNote(false));
             Console.ReadLine();
         }
     }
